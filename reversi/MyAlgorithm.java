@@ -97,7 +97,7 @@ public class MyAlgorithm implements ReversiAlgorithm
         for (Move move : moves):
 		    Node temp = new Node(initialState.getNewInstance(move), move);
             if (myIndex == 1):
-                temp.setScore(Math.min(alpha, alpha)
+                temp.setScore(java.lang.Math.min(alpha, alpha)
             //tmp.setScore( MinPlayer( tmp, alpha, beta, depth - 1, transposition_table ) );
 		
 		//System.out.println("SELECTED: " + optimalMove);
@@ -113,7 +113,13 @@ public class MyAlgorithm implements ReversiAlgorithm
         return optimalMove;
     }
     double alphabeta(Node node, int depth, double alpha, double beta, int player){
-        if depth = 0
+        if (depth = 0)
+            //return evaluated game state
+        if myIndex
+            for (Move move : moves):
+                Node temp = new Node(initialState.getNewInstance(move), move);
+                temp.setScore(java.lang.Math.max(alpha, alphabeta(temp.getOptimalChild)))
+
     }
     double maximizePlayer(Node node, int depth, double alpha, double beta, int player){
         expandedNodes++;
@@ -145,7 +151,41 @@ public class MyAlgorithm implements ReversiAlgorithm
     }
 
     double evaluate(Node node, int player){
+        int score;
+        //checks which player's move it is
+        GameState state = node.getState();
+        Move move = node.getMove();
+        int x = move.getX();
+        int y = move.getY();
+        int maximize = state.getMarkCount(player);
+        if (player == 1)
+            int minimize = state.getMarkCount(0);
+        else:
+            int minimize = state.getMarkCount(1);
 
-    }
+
+        int [][] scores = {
+            {100, -20, 10,  5,  5, 10, -20, 100}
+            {-20. -50. -2, -2, -2, -2, -50, -20}
+            {10,   -2, -1, -1, -1, -1,  -2,  10}
+            {5,    -2, -1, -1, -1, -1,  -2,   5}
+            {5,    -2, -1, -1, -1, -1,  -2,   5}
+            {10,   -2, -1, -1, -1, -1,  -2,  10}
+            {-20. -50. -2, -2, -2, -2, -50, -20}
+            {100, -20, 10,  5,  5, 10, -20, 100}
+        }
+
+        //positional player's endgame evaluation
+        score = maximize-minimize;
+
+        if (state == player)
+            score += scores[x][y];
+        else:
+            score -= scores[x][y];
+        
+        return score;
+        
+
+    }   
 }
  
