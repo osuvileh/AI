@@ -84,16 +84,21 @@ public class MyAlgorithm implements ReversiAlgorithm
         else
             optimalMove = null;
 		
-		Node child = new Node();
-		Node juuri = new Node();
-		child.setScore(12);
-		juuri.setState(initialState);
-		juuri.setMove(optimalMove);
-		juuri.setScore(100);
-		juuri.addChild(child);
-		juuri.print();
-		
-		
+		//Node child = new Node();
+		//Node juuri = new Node();
+		//child.setScore(12);
+		//juuri.setState(initialState);
+		//juuri.setMove(optimalMove);
+		//juuri.setScore(100);
+		//juuri.addChild(child);
+		//juuri.print();
+		int alpha = -100000;
+        int beta = 100000;
+        for (Move move : moves):
+		    Node temp = new Node(initialState.getNewInstance(move), move);
+            if (myIndex == 1):
+                temp.setScore(Math.min(alpha, alpha)
+            //tmp.setScore( MinPlayer( tmp, alpha, beta, depth - 1, transposition_table ) );
 		
 		//System.out.println("SELECTED: " + optimalMove);
 		//System.out.println("SECOND STATE");
@@ -106,6 +111,41 @@ public class MyAlgorithm implements ReversiAlgorithm
 		//}
 
         return optimalMove;
+    }
+    double alphabeta(Node node, int depth, double alpha, double beta, int player){
+        if depth = 0
+    }
+    double maximizePlayer(Node node, int depth, double alpha, double beta, int player){
+        expandedNodes++;
+        if (depth == 0)
+            //return evaluated state
+        Vector<Move> moves = node.getState().getPossibleMoves(player);
+        if(moves.size() == 0)
+            //skip turn if no possible moves
+
+        for (Move move : moves){
+            double points = minimizePlayer(new Node(node.getState().getNewInstance(move), move), alpha, beta, depth - 1);
+            alpha = Math.max(alpha, points)
+            if (points >= beta)
+                break;
+        }
+        return points;
+
+
+
+
+
+    }
+
+    double minimizePlayer(Node node, int depth, double alpha, double beta, int player){
+        spawned++;
+
+
+
+    }
+
+    double evaluate(Node node, int player){
+
     }
 }
  
